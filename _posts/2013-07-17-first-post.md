@@ -3,8 +3,6 @@ layout: post
 title: "第一篇日志"
 ---
 
-{% include JB/setup %}
-
 一直想在Github上建一个自己的博客，这两天终于把这个想法实现了。
 
 Github Pages是基于[Jekyll](http://jekyllrb.com/)，我试了以下几个方式：
@@ -33,19 +31,7 @@ Jekyll自带Pygments做代码高亮，不过让它工作还是花了不少功夫
 $ pygmentize -S native -f html > pygments.css
 ```
 
-* 最后，就可以以如下方式来高亮一段代码了：
-
-<pre>
-```javascript
-function sum(arr){
-	var i = 0, len = arr.length, sum = 0;
-	for ( ; i < len ; i++){
-		sum += arr[i];
-	}
-	return sum;
-}
-```
-</pre>
+最后看下效果：
 
 ```javascript
 function sum(arr){
@@ -58,4 +44,4 @@ function sum(arr){
 ```
 
 
-* 学习了AngularJS和Bootstrap框架，并用它们做了两个Web小应用：[个税计算器](/assets/pages/calculator.html) 和 [打字测试](/assets/pages/typing.html)。
+* 学习了AngularJS和Bootstrap框架，并用它们做了两个Web小应用：[个税计算器](/pages/calculator.html) 和 [打字测试](/pages/typing.html)。

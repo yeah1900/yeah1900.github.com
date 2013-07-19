@@ -1,10 +1,12 @@
 # This is the default format. 
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink: /:categories/:year/:month/:day/:title 
-
+permalink: /:year/:month/:day/:title
+author: yeah1900
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
+safe: true
 pygments: true
+paginate: 16
 markdown: redcarpet
 redcarpet:
     extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
@@ -14,12 +16,6 @@ redcarpet:
 #
 title : Prototype
 tagline: phase 1
-author :
-  name : Hong Xie
-  email : yeah1900@gmail.com
-  github : yeah1900
-  twitter : username
-  feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
