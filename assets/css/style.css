@@ -15,20 +15,20 @@
 body{font-size:14px;word-spacing:1px;
 	margin-left:auto;
 margin-right:auto;
-	font-family:"Galdeano","Hiragino Sans GB","Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;color:#000000;background-color:#ffffff;}
+	font-family: "Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;color:#000000;background-color:#ffffff;}
 *{padding:0;margin: 0;border:none;outline:none;}
-a{color:#dd0000;text-decoration:none;}
-a:hover{color:#333333;text-decoration:underline;}
+a{color: #0000dd;text-decoration:none;padding: 0 .2em;}
+a:hover{color: #000;text-decoration:underline;-webkit-transition: color .2s linear;/* background-color: #0000dd; */}
 hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;}
-p{padding:.5em 0;}
-li{padding:.2em 0;}
+p{padding: .5em 0;color: #555;}
+li{padding: .2em 0 .2em 1em;}
 ol,ul{list-style-position:inside;}
 ol ul, ul ol, ul ul, ol ol {margin-left:1em;}
-pre code{margin:1em 0;font-size:13px;line-height:1.6;display:block;overflow:auto;}
+pre code{margin: .5em 0;font-size: 14px;line-height:1.6;display:block;overflow:auto;padding: 10px;}
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
-#container{width:600px;margin:2em auto;display:block;padding:0 2em;}
+#container{width: 800px;margin:2em auto;display:block;padding:0 2em;}
 .content{font-size:16px;line-height:24px;}
 .content h1{padding:.5em 0;}
 .content img{max-width:600px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}
@@ -46,11 +46,11 @@ blockquote p{margin:0;padding:.5em 0;}
 .pageNav{font-weight:bold;font-size:17px;}
 .pageNavInvalid{font-weight:bold;font-size:17px;color:#D0D0D0;}
 header{padding:.5em 0;border-bottom: 1px solid #cccccc;}
-nav{font-family:"Electrolize",sans-serif;font-size:1.1em;text-transform:uppercase;float:left;margin-left:-12em;width:9em;text-align:right;position: fixed;}
+nav{font-family:"Electrolize",sans-serif;font-size:1.1em;text-transform:uppercase;float: left;margin-left: -12em;width:9em;text-align:right;position: fixed;/* border-right: 1px solid #aaa; */}
 nav a{display:block;padding:.7em 1em;color:#000000;}
-nav a:hover{background-color:#ff0000;text-decoration:none;color:#f9f9f9;-webkit-transition:color .2s linear;}
-.post{padding:.5em 0em;}
-h1{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.6em;color:#000;}
+nav a:hover{background-color: #0000ff;text-decoration:none;color:#f9f9f9;-webkit-transition:color .2s linear;}
+.post{padding: .5em;}
+h1{font-family: "Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.6em;color:#000;}
 h2{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.4em;color:#111;}
 h3{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.2em;color:#222;}
 h4{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1em;color:#333;}
@@ -73,7 +73,7 @@ footer a {
 margin: 1px;
 border: 1px solid rgba(1,1,1,0);
 border-bottom: 1px dashed #BBB;
-color: #B9221F;
+color: #1F25B9;
 text-decoration: none;
 }
 
@@ -116,10 +116,11 @@ background-color:#3a87ad;
 }
 
 .paginator {
-font: 14px Arial,Helvetica,sans-serif;
+font-size: 14px;
 color: #AAA;
 margin: 20px 0;
 line-height: 150%;
+font-family: Arial;
 display: block;
 }
 
@@ -131,7 +132,7 @@ text-decoration: none;
 
 .paginator .current-page {
 color: white;
-background: #ff0000;
+background: #0000ff;
 }
 
 .paginator a:hover{

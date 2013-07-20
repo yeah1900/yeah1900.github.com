@@ -15,7 +15,9 @@ Github Pages是基于[Jekyll](http://jekyllrb.com/)，我试了以下几个方�
 
 所以，最后我决定用第三种方式来搭建博客。	
 
-接下来打算美化一下博客。Jekyll Bootstrap自带了几个[可选主题](http://jekyllbootstrap.com/usage/jekyll-theming.html)。不过，我想有空的话还是要自己定制下，现在就先用[twitter](http://themes.jekyllbootstrap.com/preview/twitter)将就下。
+
+
+接下来打算美化一下博客。Jekyll Bootstrap自带了几个[可选主题](http://jekyllbootstrap.com/usage/jekyll-theming.html)。~~不过，我想有空的话还是要自己定制下，现在就先用[twitter](http://themes.jekyllbootstrap.com/preview/twitter)将就下。~~最后，我打算使用[这个博客的主题](http://webfrogs.me/)。
 
 Jekyll自带Pygments做代码高亮，不过让它工作还是花了不少功夫。
 
@@ -27,7 +29,7 @@ Jekyll自带Pygments做代码高亮，不过让它工作还是花了不少功夫
 
 * 可以通过Pygmentize命令来生成代码高亮的样式文件并把它引用到布局文件里。
 
-```bash
+```bash linenos
 $ pygmentize -S native -f html > pygments.css
 ```
 
@@ -43,5 +45,23 @@ function sum(arr){
 }
 ```
 
+```css
+white-space:pre;
+white-space:pre-wrap;
+word-break:break-all;
+word-wrap:break-word;
+```
 
-* 学习了AngularJS和Bootstrap框架，并用它们做了两个Web小应用：[个税计算器](/pages/calculator.html) 和 [打字测试](/pages/typing.html)。
+```html
+<div class="row statistics text-center">
+	<div class="span4 red">
+		正确率：{{statistics.correct}} / {{statistics.typed}} = {{statistics.correctPct | number:0}}%
+		</div>
+	<div class="span4 green">
+		时间：{{statistics.timeElapsedStr}}
+	</div>
+	<div class="span4 blue">
+		速度：{{statistics.speed | number:0}}字 / 分
+	</div>
+</div>
+```
