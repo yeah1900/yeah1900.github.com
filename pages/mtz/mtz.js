@@ -7,9 +7,9 @@
 //TODO: update current time
 
 (function(){
-	var LENGTH = 720,
-		LEFT = 100,
-		LINE_HEIGHT = 60;
+	var LENGTH = 1440,
+		LEFT = 200,
+		LINE_HEIGHT = 120;
 
 
 	var locations = [
@@ -63,15 +63,15 @@
 
 		date.setHours(date.getHours() + timeDiff);
 
-		ctx.fillText(location.city, x - 100, y - 10);
-		ctx.fillText(date.toLocaleTimeString(), x - 100, y + 10);
+		ctx.fillText(location.city, x - 200, y - 20);
+		ctx.fillText(date.toLocaleTimeString(), x - 200, y + 20);
 
 		drawPoints(timeDiff, x, y);
 	}
 
 	function drawPoints(timeOffset, x, y){
 		var offsetX = LENGTH / 24,
-			offsetY = 5,
+			offsetY = 10,
 			lx, tx, localTime;
 
 		for (var i = 0; i <= 24; i++) {
@@ -93,8 +93,8 @@
 				ctx.restore();
 			}
 			
-			tx = lx - 3;
-			ty = y - 7;
+			tx = lx - 6;
+			ty = y - 14;
 			//TODO: let text center align
 			ctx.fillText(localTime, tx, ty);
 		}
@@ -111,9 +111,10 @@
 		util.drawLine([x, x], [y, y + LINE_HEIGHT * 4])
 		ctx.restore();
 
-		ctx.fillText('now', x - 5, LINE_HEIGHT * 4 + 10);
+		ctx.fillText('now', x - 10, LINE_HEIGHT * 4 + 20);
 	}
 
+	ctx.font = '1.2em monaco'
 	drawCurrentTime();
 	for (var i = 1; i <= locations.length; i++){
 		drawTimeline(locations[i - 1], LEFT, i * LINE_HEIGHT);

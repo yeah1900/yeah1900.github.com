@@ -43,50 +43,53 @@
 					<div class="span3">缴纳金额</div>
 				</div>		
 				<div class="row-fluid">
-					<div class="span3 text-left">社保<a href="#" style="font-size:10px" ng-click="detailsShow=!detailsShow">{{detailsShow && '隐藏' || '显示'}}</a></div>
+					<div class="span3 text-left">社保<a href="javascript:void(0);" style="font-size:10px" ng-click="detailsShow=!detailsShow">{{detailsShow && '隐藏' || '显示'}}</a></div>
 					<div class="span3">{{getInsuranceRate()*100 + '%'}}</div>
 					<div class="span3">{{boundedInsurance}}</div>
-					<div class="span3">{{paidInsurance}}</div>
+					<div class="span3">{{paidInsurance | number:2}}</div>
 				</div>
 				<div class="subitems {{detailsShow && 'show' || ''}}">
 					<div style="position:absolute;left:5px;top:0px;height:99%;width:2px;background-color:blue"></div>
 					<div class="row-fluid" ng-repeat="ins in insurance.items">
 						<div class="span3 text-left" style="padding-left:15px">{{ins.name}}</div>
 						<div class="span3">{{ins.rate*100 + '%'}}</div>
-						<div class="offset3 span3">{{boundedInsurance * ins.rate}}</div>
+						<div class="offset3 span3">{{boundedInsurance * ins.rate | number:2}}</div>
 					</div>
 				</div>
 				<div class="row-fluid">
 					<div class="span3 text-left">公积金</div>
-					<div class="span3">{{houseFunding.rate*100 + '%'}}</div>
+					<div class="span3">
+						<select ng-show="!!houseFunding.rate.vls" style="width: auto; margin-bottom: 0px;" ng-model="houseFunding.rate.v" ng-options="(rate * 100 + '%') for rate in houseFunding.rate.vls" ng-change="doCalculate()"></select>
+						<span ng-show="!houseFunding.rate.vls">{{houseFunding.rate.v * 100 + '%'}}</span>
+					</div>
 					<div class="span3">{{boundedHouseFunding}}</div>
-					<div class="span3">{{paidHouseFunding}}</div>
+					<div class="span3">{{paidHouseFunding | number:2}}</div>
 				</div>
 				<div class="row-fluid">
-					<div class="span3 text-left">个人所得税<a href="#" style="font-size:10px" ng-click="detailsShow2=!detailsShow2">{{detailsShow2 && '隐藏' || '显示'}}</a></div>
-					<div class="span3 offset6">{{paidTax*1 + bonusTax*1}}</div>
+					<div class="span3 text-left">个人所得税<a href="javascript:void(0);" style="font-size:10px" ng-click="detailsShow2=!detailsShow2">{{detailsShow2 && '隐藏' || '显示'}}</a></div>
+					<div class="span3 offset6">{{paidTax*1 + bonusTax*1 | number:2}}</div>
 				</div>
 				<div class="subitems {{detailsShow2 && 'show' || ''}}">
 					<div style="position:absolute;left:5px;top:0px;height:99%;width:2px;background-color:blue"></div>
 					<div class="row-fluid">
 						<div class="span3 text-left" style="padding-left:15px">当月工资扣税</div>
-						<div class="span3 offset6">{{paidTax}}</div>
+						<div class="span3 offset6">{{paidTax | number:2}}</div>
 					</div>
 					<div class="row-fluid">
 						<div class="span3 text-left" style="padding-left:15px">年终奖扣税</div>
-						<div class="span3 offset6">{{bonusTax}}</div>
+						<div class="span3 offset6">{{bonusTax | number:2}}</div>
 					</div>
 				</div>
 				<div class="row-fluid">
 					<div class="span3 text-left">实际收入</div>
-					<div class="span3 offset6">{{actualPay}}</div>
+					<div class="span3 offset6">{{actualPay | number:2}}</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 	<script src="/assets/js/angular1.1.5.min.js"></script>
-	<script src="/assets/js/calculator-app.js"></script>
+	<script src="calculator-app.js"></script>
 	
 	<!--<script src="js/jquery-2.0.3.min.js"></script>
 	<script src="js/bootstrap.js"></script>-->

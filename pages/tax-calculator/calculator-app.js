@@ -32,7 +32,7 @@ function CalculatorCtrl($scope) {
 		},
 		houseFunding: {
 			name: '公积金', 
-			rate: 0.10,
+			rate: { v: 0.10, vls: [0.08, 0.09, 0.10, 0.11, 0.12] },
 			upper: 13600,
 			lower: 1370
 		}
@@ -52,7 +52,7 @@ function CalculatorCtrl($scope) {
 		},
 		houseFunding: {
 			name: '公积金', 
-			rate: 0.10,
+			rate: { v: 0.10, vls: [0.08, 0.09, 0.10, 0.11, 0.12] },
 			upper: 15400,
 			lower: 1370
 		}
@@ -72,14 +72,14 @@ function CalculatorCtrl($scope) {
 		},
 		houseFunding: {
 			name: '公积金', 
-			rate: 0.12,
+			rate: { v: 0.12 },
 			upper: 14104,
 			lower: 1470
 		}
 	}
   ];
   
-  $scope.city = $scope.cities[0];
+  $scope.city = $scope.cities[1];
   
   $scope.insurance = $scope.city.insurance;
   
@@ -128,7 +128,7 @@ function CalculatorCtrl($scope) {
   $scope.getHouseFunding = function(amount){
 	if (amount > 0){
 		var f = this.houseFunding;
-		return getBounded(amount, f.upper, f.lower) * f.rate;
+		return getBounded(amount, f.upper, f.lower) * f.rate.v;
 	}else{
 		return 0;
 	}
@@ -160,7 +160,7 @@ function CalculatorCtrl($scope) {
 		  taxable -= levelTaxable;
 		  lower = levels[i].upper;
 	    }
-	    return tax.toFixed(2);
+	    return tax;
 	}else{
 		return 0;
 	}
@@ -193,7 +193,7 @@ function CalculatorCtrl($scope) {
   $scope.reset = function(){
 	this.boundedInsurance = this.insurance.lower + ' ~ ' + this.insurance.upper;
 	this.boundedHouseFunding = this.houseFunding.lower + ' ~ ' + this.houseFunding.upper;
-	this.paidInsurance = this.paidHouseFunding = this.paidTax = this.bonusTax = 0;
+	this.paidInsurance = this.paidHouseFunding = this.paidTax = this.bonusTax = this.actualPay = 0;
   }
   
   $scope.reset();
