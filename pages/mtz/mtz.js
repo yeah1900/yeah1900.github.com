@@ -1,4 +1,4 @@
-//TODO: user can add one city to watch
+﻿//TODO: user can add one city to watch
 //TODO: get timezone data(time offset) through API
 //--TODO: consider daylight save
 //[DONE]TODO: apply current time
@@ -13,9 +13,9 @@
 
 
 	var locations = [
-		{ city: 'Suzhou', timezone: 8},
-		{ city: 'Copenhagen', timezone: 2 },
-		{ city: 'San Francisco', timezone: -7}
+		{ city: '苏州', timezone: 8},
+		{ city: '哥本哈根', timezone: 2 },
+		{ city: '旧金山', timezone: -7, daylightSaving: {start: {m:3, w:4}}}
 	];
 
 	var availStart = 7, availEnd = 23;
@@ -43,8 +43,9 @@
 				return;
 			}
 
-			ctx.beginPath();
 
+			ctx.beginPath();
+			ctx.lineWidth = 5;
 			ctx.moveTo(xArr[0], yArr[0]);
 
 			for (var i = 1; i < xArr.length; i++){
@@ -64,7 +65,7 @@
 		date.setHours(date.getHours() + timeDiff);
 
 		ctx.fillText(location.city, x - 200, y - 20);
-		ctx.fillText(date.toLocaleTimeString(), x - 200, y + 20);
+		ctx.fillText(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(), x - 200, y + 20);
 
 		drawPoints(timeDiff, x, y);
 	}
@@ -84,7 +85,7 @@
 
 			if (i < 24){
 				ctx.save();
-				if (localTime <= availEnd && localTime >= availStart) {
+				if (localTime < availEnd && localTime >= availStart) {
 					ctx.strokeStyle="#0000FF";
 				} else{
 					ctx.strokeStyle="#AAAAAA";
@@ -111,12 +112,27 @@
 		util.drawLine([x, x], [y, y + LINE_HEIGHT * 4])
 		ctx.restore();
 
-		ctx.fillText('now', x - 10, LINE_HEIGHT * 4 + 20);
+		ctx.fillText('当前时间', x - 40, LINE_HEIGHT * 4 + 20);
 	}
 
-	ctx.font = '1.2em monaco'
-	drawCurrentTime();
-	for (var i = 1; i <= locations.length; i++){
-		drawTimeline(locations[i - 1], LEFT, i * LINE_HEIGHT);
+	function drawAll(){
+		ctx.font = '1.5em monaco'
+		drawCurrentTime();
+		for (var i = 1; i <= locations.length; i++){
+			drawTimeline(locations[i - 1], LEFT, i * LINE_HEIGHT);
+		}
 	}
+
+	document.getElementById('confirm').onclick = function(){
+		var start = document.getElementsByName('start')[0].value || availStart,
+			end = document.getElementsByName('end')[0].value || availEnd;
+
+		availEnd = parseInt(end, 10);
+		availStart = parseInt(start, 10);
+
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		drawAll();
+	}
+
+	drawAll();
 })();

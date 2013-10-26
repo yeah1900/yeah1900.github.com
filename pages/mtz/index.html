@@ -2,16 +2,25 @@
 <html>
   <head>
     <style>
-      #myCanvas {
+      #myCanvas,
+      .settings {
       	margin: auto;
       	display: block;
         width: 1000px;
-        height: 600px;
+        height: 300px;
       }
     </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="2000" height="1200" style="margin:auto"></canvas>
+    <canvas id="myCanvas" width="2000" height="600" style="margin:auto"></canvas>
+    <div class="settings">
+      <span>活跃时间段：</span>
+      <input name="start" value="7">
+      <span> - </span>
+      <input name="end" value="23">
+      <button id="confirm">确认</button>
+    </div>
+
   </body>
 
 <script defer="defer" src="mtz.js"></script>
