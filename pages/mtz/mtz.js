@@ -11,12 +11,19 @@
 		LEFT = 200,
 		LINE_HEIGHT = 120;
 
+	var daylightSavingStatus = 'on';
 
-	var locations = [
+	var locationData = {'on': [
 		{ city: '苏州', timezone: 8},
 		{ city: '哥本哈根', timezone: 2 },
-		{ city: '旧金山', timezone: -7, daylightSaving: {start: {m:3, w:4}}}
-	];
+		{ city: '旧金山', timezone: -7}
+	], 'off': [
+		{ city: '苏州', timezone: 8},
+		{ city: '哥本哈根', timezone: 1 },
+		{ city: '旧金山', timezone: -8}
+	]};
+
+	var locations = locationData[daylightSavingStatus];
 
 	var availStart = 7, availEnd = 23;
 
@@ -56,6 +63,17 @@
 			ctx.stroke();
 			ctx.closePath();
 		}
+	}
+
+	document.getElementById('dls').onclick = function(){
+		daylightSavingStatus = daylightSavingStatus == 'on' ? 'off' : 'on';
+
+		locations = locationData[daylightSavingStatus];
+
+		this.innerHTML = '夏令时：' + daylightSavingStatus;
+
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		drawAll();
 	}
 
 	function drawTimeline(location, x, y) {
