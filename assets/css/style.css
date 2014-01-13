@@ -12,16 +12,18 @@
 @import url(http://fonts.googleapis.com/css?family=Galdeano);
 @import url(http://fonts.googleapis.com/css?family=Electrolize);
 @import url(http://fonts.googleapis.com/css?family=Cuprum);
-body{font-size:14px;word-spacing:1px;
-	margin-left:auto;
-margin-right:auto;
-	font-family: "Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;color:#000000;background-color:#ffffff;}
+body{
+	font-size:14px;
+	word-spacing:1px;
+	margin-left: 0 auto;
+	font-family: "Microsoft YaHei",Trebuchet,Helvetica, arial, sans-serif;
+	color:#000000;
+	background-color:#ffffff;
+}
 *{padding:0;margin: 0;border:none;outline:none;}
-a{color: #0000dd;text-decoration:none;padding: 0 .2em;}
+a{color: #3535FF;text-decoration:none;padding: 0 .2em;}
 a:hover{color: #000;text-decoration:underline;-webkit-transition: color .2s linear;/* background-color: #0000dd; */}
 hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;}
-p{padding: .5em 0;color: #555;}
-li{padding: .2em 0 .2em 1em;}
 ol,ul{list-style-position:inside;}
 ol ul, ul ol, ul ul, ol ol {margin-left:1em;}
 pre code{margin: .5em 0;font-size: 14px;line-height:1.6;display:block;overflow:auto;padding: 10px;}
@@ -39,22 +41,24 @@ blockquote p{margin:0;padding:.5em 0;}
 	padding:.2em 1em;
 
 }
-
+.listing-item {
+	margin: .5em;
+}
 .listing-item time{color:#999999;}
 .listing-seperator{font-weight:bold;}
 .meta{text-align:right;font-size:12px;}
 .pageNav{font-weight:bold;font-size:17px;}
 .pageNavInvalid{font-weight:bold;font-size:17px;color:#D0D0D0;}
 header{padding:.5em 0;border-bottom: 1px solid #cccccc;}
-nav{font-family:"Electrolize",sans-serif;font-size:1.1em;text-transform:uppercase;float: left;margin-left: -12em;width:9em;text-align:right;position: fixed;/* border-right: 1px solid #aaa; */}
+nav{font-size:1.1em;text-transform:uppercase;float: left;margin-left: -12em;width:9em;text-align:right;position: fixed;/* border-right: 1px solid #aaa; */}
 nav a{display:block;padding:.7em 1em;color:#000000;}
 nav a:hover{background-color: #0000ff;text-decoration:none;color:#f9f9f9;-webkit-transition:color .2s linear;}
 .post{padding: .5em;}
-h1{font-family: "Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.6em;color:#000;}
-h2{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.4em;color:#111;}
-h3{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.2em;color:#222;}
-h4{font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1em;color:#333;}
-pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:13px;}
+header h1{font-family: "Microsoft YaHei",sans-serif;font-size:2em;color:#000; margin: 0;}
+h2{font-family: "Microsoft YaHei",sans-serif;font-size:1.4em;color:#111;}
+h3{font-family: "Microsoft YaHei",sans-serif;font-size:1.2em;color:#222;}
+h4{font-family: "Microsoft YaHei",sans-serif;font-size:1em;color:#333;}
+pre,code{font-family: Monaco, Consolas, "Courier New",monospace;font-size:13px;}
 code{background-color:#EBEBEB; margin: 0 5px;}
 embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}
