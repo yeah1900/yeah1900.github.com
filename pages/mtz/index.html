@@ -7,21 +7,39 @@
       	margin: auto;
       	display: block;
         width: 1000px;
-        height: 300px;
+      }
+
+      .settings {
+        height: 200px;
+      }
+
+      #myCanvas: {
+        height: 500px;
       }
     </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="2000" height="600" style="margin:auto"></canvas>
     <div class="settings">
-      <button id="dls">夏令时：on</button>
-      <span>活跃时间段：</span>
-      <input name="start" value="7">
-      <span> - </span>
-      <input name="end" value="23">
-      <button id="confirm">确认</button>
+      <fieldset>
+        <legend>添加时区</legend>
+        城市名：<input id="city" name="city">
+        <select id="timezones"></select>
+        <input id="hasDST" type="checkbox">受夏令时影响？
+        <button id="addTimezone">添加</button>
+      </fieldset>
+      <fieldset>
+        <legend>夏令时</legend>
+        <button id="dls">on</button>
+      </fieldset>
+      <fieldset>
+        <legend>活跃时间段</legend>
+        <input name="start" value="7">
+        <span> - </span>
+        <input name="end" value="23">
+        <button id="confirm">确认</button>
+      </fieldset>
     </div>
-
+    <canvas id="myCanvas" width="2000" height="1000" style="margin:auto"></canvas>
   </body>
 
 <script defer="defer" src="mtz.js"></script>

@@ -7,8 +7,8 @@
 //TODO: update current time
 
 (function(){
-	var LENGTH = 1440,
-		LEFT = 200,
+	var LENGTH = 24*60,
+		LEFT = 250,
 		LINE_HEIGHT = 120;
 
 	var daylightSavingStatus = 'on';
@@ -70,10 +70,10 @@
 
 		locations = locationData[daylightSavingStatus];
 
-		this.innerHTML = '夏令时：' + daylightSavingStatus;
+		this.innerHTML = daylightSavingStatus;
 
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		drawAll();
+		//ctx.clearRect(0, 0, canvas.width, canvas.height);
+		//drawAll();
 	}
 
 	function drawTimeline(location, x, y) {
@@ -82,10 +82,26 @@
 
 		date.setHours(date.getHours() + timeDiff);
 
-		ctx.fillText(location.city, x - 200, y - 20);
-		ctx.fillText(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(), x - 200, y + 20);
+		ctx.fillText(location.city + '(GMT' 
+								   + (location.timezone == 0 ? '' : 
+								   		(location.timezone > 0 ? ('+' + location.timezone) : location.timezone ) 
+								   	 ) + ')', x - LEFT, y - 20);
+		ctx.fillText(formatNumber(date.getHours(), 2) + ':' + formatNumber(date.getMinutes(), 2) + ':' + formatNumber(date.getSeconds(), 2), x - LEFT, y + 20);
 
 		drawPoints(timeDiff, x, y);
+	}
+
+	function formatNumber(number, digit){
+		if (digit > 0) {
+			var add = Math.pow(10, digit);
+
+			if (number < add){
+				var str = number + add + '';
+				return str.substring(str.length - digit , str.length)
+			}
+		}
+
+		return number + '';
 	}
 
 	function drawPoints(timeOffset, x, y){
@@ -127,13 +143,14 @@
 
 		ctx.save();
 		ctx.strokeStyle = '#CCC';
-		util.drawLine([x, x], [y, y + LINE_HEIGHT * 4])
+		util.drawLine([x, x], [y, y + LINE_HEIGHT * (locationData.on.length + 1)])
 		ctx.restore();
 
-		ctx.fillText('当前时间', x - 40, LINE_HEIGHT * 4 + 20);
+		ctx.fillText('当前时间', x - 40, LINE_HEIGHT * (locationData.on.length + 1) + 30);
 	}
 
 	function drawAll(){
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.font = '1.5em monaco'
 		drawCurrentTime();
 		for (var i = 1; i <= locations.length; i++){
@@ -148,9 +165,30 @@
 		availEnd = parseInt(end, 10);
 		availStart = parseInt(start, 10);
 
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		drawAll();
+		//ctx.clearRect(0, 0, canvas.width, canvas.height);
+		//drawAll();
+	}
+
+	var selectbox = document.getElementById('timezones');
+	for (var i = -12; i <= 12; i++){
+		var option = document.createElement('option');
+		option.text = 'GMT' + (i < 0 ? i : (i == 0 ? '' : '+' + i));
+		option.value = i;
+		selectbox.add(option);
+	}
+
+	document.getElementById('addTimezone').onclick = function(){
+		var city = document.getElementById('city').value;
+		var timezone = document.getElementById('timezones').value;
+		var hasDST = document.getElementById('hasDST').checked;
+
+		locationData['on'].push({
+									city: city,
+									timezone: parseInt(timezone, 10) + ( hasDST ? (daylightSavingStatus === 'on' ? 0: 1) : 0)
+								});
+		locationData['off'].push({city: city, timezone: parseInt(timezone,10) + (hasDST ? (daylightSavingStatus === 'on' ? -1: 0) : 0)});
 	}
 
 	drawAll();
+	setInterval(function(){drawAll();}, 1000);
 })();
