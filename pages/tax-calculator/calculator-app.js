@@ -1,7 +1,7 @@
 ﻿//Question: model - what type ?
 //
 //
-
+'use strict';
 var TAX_LEVELS = [
 		  {upper: 1500, rate: 0.03},
 		  {upper: 4500, rate: 0.1},
@@ -21,17 +21,17 @@ function CalculatorCtrl($scope) {
 		name: '苏州2012',
 		insurance: {
 			items: [
-				{name: '养老', rate: 0.08},
-				{name: '医疗', rate: 0.02},
-				{name: '工伤', rate: 0.00},
-				{name: '生育', rate: 0.00},
-				{name: '失业', rate: 0.01}
+				{name: '养老', rate: 0.08, companyRate: 0.20},
+				{name: '医疗', rate: 0.02, companyRate: 0.09},
+				{name: '工伤', rate: 0.00, companyRate: 0.01},
+				{name: '生育', rate: 0.00, companyRate: 0.01},
+				{name: '失业', rate: 0.01, companyRate: 0.02}
 			],
 			upper: 12915,
 			lower: 2010
 		},
 		houseFunding: {
-			name: '公积金', 
+			name: '公积金',
 			rate: { v: 0.10, vls: [0.08, 0.09, 0.10, 0.11, 0.12] },
 			upper: 13600,
 			lower: 1370
@@ -41,18 +41,18 @@ function CalculatorCtrl($scope) {
 		name: '苏州2013',
 		insurance: {
 			items: [
-				{name: '养老', rate: 0.08},
-				{name: '医疗', rate: 0.02},
-				{name: '工伤', rate: 0.00},
-				{name: '生育', rate: 0.00},
-				{name: '失业', rate: 0.01}
+				{name: '养老', rate: 0.08, companyRate: 0.20},
+				{name: '医疗', rate: 0.02, companyRate: 0.09},
+				{name: '工伤', rate: 0.00, companyRate: 0.01},
+				{name: '生育', rate: 0.00, companyRate: 0.01},
+				{name: '失业', rate: 0.01, companyRate: 0.02}
 			],
 			upper: 14407,
 			lower: 2010
 		},
 		houseFunding: {
-			name: '公积金', 
-			rate: { v: 0.10, vls: [0.08, 0.09, 0.10, 0.11, 0.12] },
+			name: '公积金',
+			rate: { v: 0.10, vls: [0.08, 0.09, 0.10, 0.11, 0.12]},
 			upper: 15400,
 			lower: 1370
 		}
@@ -61,17 +61,28 @@ function CalculatorCtrl($scope) {
 		name: '杭州',
 		insurance: {
 			items: [
-				{name: '养老', rate: 0.08},
-				{name: '医疗', rate: 0.02},
-				{name: '工伤', rate: 0.00},
-				{name: '生育', rate: 0.00},
-				{name: '失业', rate: 0.01}
+				{name: '养老', rate: 0.08, companyRate: 0.14},
+				{name: '医疗', rate: 0.02, companyRate: 0.115},
+				{name: '工伤', rate: 0.00, companyRate: 0.005},
+				{name: '生育', rate: 0.00, companyRate: 0.008},
+				{name: '失业', rate: 0.01, companyRate: 0.02}
 			],
 			upper: 10050,
 			lower: 2010
 		},
+		insuranceCompany: {
+			items: [
+				{name: '养老', rate: 0.20},
+				{name: '医疗', rate: 0.09},
+				{name: '工伤', rate: 0.01},
+				{name: '生育', rate: 0.01},
+				{name: '失业', rate: 0.02}
+			],
+			upper: 14407,
+			lower: 2010
+		},
 		houseFunding: {
-			name: '公积金', 
+			name: '公积金',
 			rate: { v: 0.12 },
 			upper: 14104,
 			lower: 1470
@@ -87,20 +98,30 @@ function CalculatorCtrl($scope) {
   
   $scope.cityChange = function(){
 	$scope.insurance = $scope.city.insurance;
+	$scope.insuranceCompany = $scope.city.insuranceCompany;
     $scope.houseFunding = $scope.city.houseFunding;
 	this.reset();
-  }
+  };
   
   $scope.getInsuranceRate = function(){
-	var rate = 0; 
+	var rate = 0;
 	angular.forEach(this.insurance.items, function(i){
 		rate += i.rate;
 	});
 	
 	return rate;
-  }
+  };
+
+  $scope.getInsuranceCompanyRate = function(){
+  	var rate = 0;
+	angular.forEach(this.insurance.items, function(i){
+		rate += i.companyRate;
+	});
+	
+	return rate;
+  };
   
-  getBounded = function(amount, upper, lower){
+  var getBounded = function(amount, upper, lower){
 	if (amount < lower){
 		return 0;
 	}else if (amount > upper){
@@ -108,7 +129,7 @@ function CalculatorCtrl($scope) {
 	}else {
 		return amount;
 	}
-  }
+  };
   
   $scope.getInsurance = function(amount){
 	if (amount > 0){
@@ -118,6 +139,21 @@ function CalculatorCtrl($scope) {
 			insuranceBase = getBounded(amount, insurance.upper, insurance.lower);
 		for (i = 0; i < insurance.items.length; i++){
 			total += insurance.items[i].rate * insuranceBase;
+		}
+		return total;
+	}else{
+		return 0;
+	}
+  }
+
+  $scope.getInsuranceCompany = function(amount){
+	if (amount > 0){
+		var i, 
+			total = 0, 
+			insurance = this.insurance, 
+			insuranceBase = getBounded(amount, insurance.upper, insurance.lower);
+		for (i = 0; i < insurance.items.length; i++){
+			total += insurance.items[i].companyRate * insuranceBase;
 		}
 		return total;
 	}else{
@@ -183,6 +219,7 @@ function CalculatorCtrl($scope) {
 	
 	this.boundedInsurance = getBounded(pay, this.insurance.upper, this.insurance.lower);
 	this.paidInsurance = this.getInsurance(pay);
+	this.paidInsuranceCompany = this.getInsuranceCompany(pay);
 	this.boundedHouseFunding = getBounded(pay, this.houseFunding.upper, this.houseFunding.lower);
 	this.paidHouseFunding = this.getHouseFunding(pay);
 	this.paidTax = this.getTax(pay - this.paidInsurance - this.paidHouseFunding);
