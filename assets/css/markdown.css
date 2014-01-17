@@ -4,7 +4,9 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: white;
-  padding: 30px; }
+  padding: 30px;
+  color: #555;
+}
  
 body > *:first-child {
   margin-top: 0 !important; }
@@ -22,12 +24,14 @@ a.anchor {
   bottom: 0; }
  
 h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 0px;
+  margin: 15px 0;
   padding: 0;
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
   cursor: text;
-  position: relative; }
+  position: relative; 
+  color: #000;
+}
  
 h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
   background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;
@@ -52,34 +56,26 @@ h6 tt, h6 code {
   font-size: inherit; }
  
 h1 {
-  font-size: 28px;
-  color: black; }
+  font-size: 21px; }
  
 h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
- 
-h3 {
   font-size: 18px; }
- 
-h4 {
+
+h3 {
   font-size: 16px; }
  
-h5 {
+h4 {
   font-size: 14px; }
  
+h5 {
+  font-size: 12px; }
+ 
 h6 {
-  color: #777777;
-  font-size: 14px; }
+  font-size: 12px; }
  
 p, blockquote, ul, ol, dl, li, table, pre {
   margin: 10px 0;
   
-}
-
-p {
-  text-indent: 2em;
 }
 
 li > p {
@@ -112,9 +108,6 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
  
 li p.first {
   display: inline-block; }
- 
-ul, ol {
-  padding-left: 2em; }
  
 ul :first-child, ol :first-child {
   margin-top: 0; }
