@@ -18,7 +18,7 @@ body{
 	background-color:#ffffff;
 }
 *{padding:0;margin: 0;border:none;outline:none;}
-a{color: #3535FF;text-decoration:none;padding: 0 .2em;}
+a{color: #3535FF;text-decoration:none;}
 a:hover{color: #000;text-decoration:underline;-webkit-transition: color .2s linear;/* background-color: #0000dd; */}
 hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;}
 ol,ul{list-style-position:inside;}
@@ -28,15 +28,11 @@ blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
 #container{width: 800px;margin:2em auto;display:block;padding:0 2em;}
-.content{font-size:16px;}
+.content{font-size:16px;min-height:500px;}
 .content img{max-width:600px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}
 #tag_cloud{margin-bottom: 1em;}
 #tag_cloud a:hover{color:#333333 !important;text-decoration:none;}
 .listing-item,.listing-seperator{list-style-type:none;}
-.listing-item a{
-	padding:.2em 1em;
-
-}
 .listing-item {
 	margin: .5em;
 }
