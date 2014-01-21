@@ -18,7 +18,11 @@ body{
 	background-color:#ffffff;
 }
 *{padding:0;margin: 0;border:none;outline:none;}
-a{color: #3535FF;text-decoration:none;}
+a{
+	color: #3535FF;
+	text-decoration:none;
+	padding: 0 2px;
+}
 a:hover{color: #000;text-decoration:underline;-webkit-transition: color .2s linear;/* background-color: #0000dd; */}
 hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;}
 ol,ul{list-style-position:inside;}
