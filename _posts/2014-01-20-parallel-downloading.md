@@ -59,6 +59,4 @@ $LAB.script("script1.js")
 
 > Nicholas Zakas也因ControlJS引发了很多思考，并分析了ControlJS和LABJS的区别所在，详细内容可以阅读[Thoughts on script loaders](http://www.nczonline.net/blog/2010/12/21/thoughts-on-script-loaders/)和[Separating JavaScript download and execution](http://www.nczonline.net/blog/2011/02/14/separating-javascript-download-and-execution/)。Zakas不赞成使用额外的脚本加载库，会因为浏览器检测的依赖，需要高成本的维护，同时浏览器的发展会为我们解决此类问题。
 
-# TODO
-
-测试JS的并行下载
+Steve Souders写了一个用了测试工具 —— [Cuzillion](http://stevesouders.com/cuzillion/)，可以用来验证、测试关于资源并行加载的结果。
