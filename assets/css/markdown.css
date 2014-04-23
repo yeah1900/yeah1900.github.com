@@ -1,17 +1,4 @@
-body {
-  font-family: "Microsoft YaHei",Trebuchet,Helvetica, arial, sans-serif;
-  font-size: 14px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px;
-  color: #555;
-}
- 
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
+
  
 a.anchor {
   display: block;

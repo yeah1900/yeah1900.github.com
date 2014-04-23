@@ -9,14 +9,21 @@
 * |\.|._)._)
 * --------------------------------- */
 
-body{
-	font-size:14px;
-	word-spacing:1px;
-	margin-left: 0 auto;
-	font-family: "Microsoft YaHei",Trebuchet,Helvetica, arial, sans-serif;
-	color:#000000;
-	background-color:#ffffff;
+body {
+  font-family: "Microsoft YaHei",Trebuchet,Helvetica, arial, sans-serif;
+  font-size: 14px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+  color: #555;
 }
+
+#container{
+	width: 800px;
+	margin: 0.5em auto;
+	display:block;
+}
+
 *{padding:0;margin: 0;border:none;outline:none;}
 a{
 	color: #3535FF;
@@ -31,9 +38,12 @@ pre code{margin: .5em 0;font-size: 14px;line-height:1.6;display:block;overflow:a
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
-#container{width: 800px;margin:2em auto;display:block;padding:0 2em;}
+
 .content{font-size:16px;min-height:500px;}
-.content img{max-width:600px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}
+/*.content img{max-width:600px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}*/
+.content img{
+	display: block;
+}
 #tag_cloud{margin-bottom: 1em;}
 #tag_cloud a:hover{color:#333333 !important;text-decoration:none;}
 .listing-item,.listing-seperator{list-style-type:none;}
