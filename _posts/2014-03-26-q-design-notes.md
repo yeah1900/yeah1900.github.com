@@ -6,6 +6,8 @@ category:
 tags: []
 ---
 
+Why we need promises for async programming?
+
 Q([src](https://github.com/kriskowal/q), [doc](http://documentup.com/kriskowal/q/)) is "a tool for making and composing asynchronous promises in JavaScript".
 
 Below is one common usage of Q:

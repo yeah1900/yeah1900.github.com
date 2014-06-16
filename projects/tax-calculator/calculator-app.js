@@ -58,6 +58,26 @@ function CalculatorCtrl($scope) {
 		}
 	},
 	{
+		name: '苏州2014',
+		insurance: {
+			items: [
+				{name: '养老', rate: 0.08, companyRate: 0.20},
+				{name: '医疗', rate: 0.02, companyRate: 0.09},
+				{name: '工伤', rate: 0.00, companyRate: 0.01},
+				{name: '生育', rate: 0.00, companyRate: 0.01},
+				{name: '失业', rate: 0.01, companyRate: 0.02}
+			],
+			upper: 16208,
+			lower: 2387
+		},
+		houseFunding: {
+			name: '公积金',
+			rate: { v: 0.10, vls: [0.08, 0.09, 0.10, 0.11, 0.12]},
+			upper: 17300,
+			lower: 2387
+		}
+	},
+	{
 		name: '杭州',
 		insurance: {
 			items: [
@@ -90,7 +110,7 @@ function CalculatorCtrl($scope) {
 	}
   ];
   
-  $scope.city = $scope.cities[1];
+  $scope.city = $scope.cities[2];
   
   $scope.insurance = $scope.city.insurance;
   
