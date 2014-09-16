@@ -65,7 +65,7 @@ function CalculatorCtrl($scope) {
 				{name: '医疗', rate: 0.02, companyRate: 0.09},
 				{name: '工伤', rate: 0.00, companyRate: 0.01},
 				{name: '生育', rate: 0.00, companyRate: 0.01},
-				{name: '失业', rate: 0.01, companyRate: 0.02}
+				{name: '失业', rate: 0.005, companyRate: 0.15}
 			],
 			upper: 16208,
 			lower: 2387
