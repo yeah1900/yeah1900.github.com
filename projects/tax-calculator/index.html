@@ -47,7 +47,7 @@
 					</div>		
 					<div class="row-fluid">
 						<div class="span3 text-left"><a href="javascript:void(0);" style="font-family:monospace" ng-click="detailsShow=!detailsShow">{{detailsShow && '-' || '+'}}</a> 社保</div>
-						<div class="span3">{{getInsuranceRate()*100 + '%'}} / {{getInsuranceCompanyRate()*100 | number: 1}}%</div>
+						<div class="span3">{{getInsuranceRate()*100 | number: 1}}% / {{getInsuranceCompanyRate()*100 | number: 1}}%</div>
 						<div class="span3">{{boundedInsurance}}</div>
 						<div class="span3">{{paidInsurance | number:2}}</div>
 					</div>
